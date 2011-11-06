@@ -67,19 +67,17 @@ output_layer = sigmoid([ones(m, 1) hidden_layer] * Theta2');
 h_x = output_layer';
 
 for iter = 1:num_labels
-  y_k = y == iter;
-  J = J + ((-log(h_x(iter, :)) * y_k - log(1 - h_x(iter, :)) * (1 - y_k)));
+	y_k = y == iter;
+	J = J + ((-log(h_x(iter, :)) * y_k - log(1 - h_x(iter, :)) * (1 - y_k)));
 end
 J =  J/m;
 J = J + lambda*(sum(sum(Theta1(:,2:end) .^ 2))+sum(sum(Theta2(:,2:end) .^ 2)))/(2*m);
 
 
 for t = 1:m
-	a_1 = X(t, :);
-	a_1 = [1 a_1];
+	a_1 = [1 X(t, :)];
 	z_2 = a_1 * Theta1';
-	a_2 = sigmoid(z_2);
-	a_2 = [1 a_2];
+	a_2 = [1 sigmoid(z_2)];
 	z_3 = a_2 * Theta2';
 	a_3 = sigmoid(z_3)';
 
