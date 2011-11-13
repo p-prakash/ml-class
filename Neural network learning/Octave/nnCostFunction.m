@@ -61,7 +61,6 @@ Theta2_grad = zeros(size(Theta2));
 %               the regularization separately and then add them to Theta1_grad
 %               and Theta2_grad from Part 2.
 %
-
 hidden_layer = sigmoid([ones(m, 1) X] * Theta1');
 output_layer = sigmoid([ones(m, 1) hidden_layer] * Theta2');
 h_x = output_layer';
@@ -99,6 +98,5 @@ Theta2_grad(:, 2:end) = Theta2_grad(:, 2:end) / m + ((lambda / m) * Theta2(:, 2:
 
 % Unroll gradients
 grad = [Theta1_grad(:) ; Theta2_grad(:)];
-
 
 end
